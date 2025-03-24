@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SwiftMoveServices.Models.ServiceModel>
+    <div class="container">
+
+        <h1 class="my-3">Current Services:</h1>
+        <a asp-controller="Service" asp-action="Create" class="btn btn-primary-col my-3 p-2 px-2">Add New Service</a>
+
+        <div class="menu p-4">
+            <h1 class="name mt-2 mb-4">Here are the services we offer!</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="fs-5">Name</th>
+                        <th class="fs-5">Price</th>
+                        <th class="fs-5">Staff</th>
+                        <th class="fs-5">Description</th>
+                        <th class="fs-5">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var service in Model)
+                    {
+                        <tr>
+                            <td class="fw-bold">@service.Name</td>
+                            <td>£@service.Price</td>
+                            <td>@service.Staff</td>
+                            <td>@service.Description</td>
+                            <td>
+                                <!--Button activates the asp action and passes the relevant product ID-->
+                                <a asp-action="Edit" asp-route-id="@service.Id" class="btn btn-warning">Edit</a>
+                                <a asp-action="Create" asp-controller="Review" asp-route-id="@service.Id" class="btn btn-info">Write a Review</a>
+                                <a asp-action="Delete" asp-route-id="@service.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
