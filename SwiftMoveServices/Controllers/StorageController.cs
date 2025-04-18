@@ -46,8 +46,21 @@ namespace SwiftMoveServices.Controllers
 
         public IActionResult BookingSummary()
         {
-            var allBookings = _context.StorageBookings.ToList();
-            return View(allBookings);
+            // Fetch the storage bookings from the database
+            var allBookings = _context.StorageBookings
+                .Select(s => new StorageBookingModel
+                {
+                    Id = s.Id,
+                    CustomerId = s.CustomerId,
+                    ConsecutiveMonths = s.ConsecutiveMonths,
+                    IsFreeMonth = s.IsFreeMonth,
+                    StartDate = s.StartDate,
+                    EndDate = s.EndDate
+                })
+                .ToList();  //Get the list of bookings, projecting to StorageBookingModel
+
+            return View(allBookings);  //Pass the model to the view
         }
+
     }
 }

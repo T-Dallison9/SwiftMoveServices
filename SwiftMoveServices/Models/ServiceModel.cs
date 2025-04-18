@@ -16,4 +16,4 @@ namespace SwiftMoveServices.Models
         [Required(ErrorMessage = "ERROR: Service Description is Required")]
         public string Description { get; set; }
     }
-} //No references, create new controllers?
+}

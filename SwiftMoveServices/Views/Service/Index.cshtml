@@ -26,10 +26,19 @@
                             <td>@service.Description</td>
                             <td>
                                 <!--Button activates the asp action and passes the relevant product ID-->
-                                <a asp-action="Edit" asp-route-id="@service.Id" class="btn btn-warning">Edit</a>
-                                <a asp-action="Create" asp-controller="Review" asp-route-id="@service.Id" class="btn btn-info">Write a Review</a>
-                                <a asp-action="Delete" asp-route-id="@service.Id" class="btn btn-danger">Delete</a>
+                            <td>
+                                    @if (User.IsInRole("Staff"))
+                                    {
+                                    <a asp-action="Edit" asp-route-id="@service.Id" class="btn btn-warning">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@service.Id" class="btn btn-danger">Delete</a>
+                                    }
+                                    else
+                                    {
+                                    <a asp-action="Create" asp-controller="Review" asp-route-id="@service.Id" class="btn btn-info">Write a Review</a>
+                                    }
                             </td>
+
+                                </td>
                         </tr>
                     }
                 </tbody>
