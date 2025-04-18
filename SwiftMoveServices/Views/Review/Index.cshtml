@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SwiftMoveServices.Models.ReviewModel>
+<!-- Loop through and display multiple reviews -->
+
+<h2>Reviews</h2>
+
+
+<table class="table">
+    <!-- This creates a table -->
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Product</th>
+            <th>Content</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <!-- Table header defines the column names for the review data -->
+
+    <tbody>
+        @foreach (var review in Model)
+        {
+            //This foreach loop iterates over each review in the model collection.
+            <tr>
+                <td>@review.Title</td>
+                
+
+                <td>@review.Service.Name</td>
+              
+
+                <td>@review.Content</td>
+                
+
+                <td>@review.Rating</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

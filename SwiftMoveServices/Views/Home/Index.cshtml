@@ -2,7 +2,74 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Banner -->
+<div class="coverPhoto d-flex align-items-end justify-content-center">
+    <h1 class="display-4 fw-bold shadow text-center">Welcome to SwiftMove Services</h1>
+</div>
+
+<!-- Welcome Message -->
+<div class="container mt-5">
+    <div id="welcomeBox">
+        <h1 class="name">SwiftMove Services</h1>
+        <p class="fs-5">
+            At SwiftMove Services, we specialize in fast, reliable, and affordable moving and delivery solutions. 
+            Whether you're relocating a home, transporting goods, or need same-day services, 
+            SwiftMove ensures your belongings are handled with care and delivered on time.
+        </p>
+    </div>
+</div>
+
+<!-- Services Overview Cards -->
+<div class="container text-center my-5 d-flex justify-content-center">
+    <div class="row">
+
+        <!-- Services -->
+        <div class="col">
+            <div class="card m-3 p-3" style="width: 18rem;">
+                <img src="./Images/moving-van.jpg" class="card-img-top" alt="Moving Van">
+                <div class="card-body">
+                    <h5 class="card-title">Our Services</h5>
+                    <p class="card-text">Discover our range of expert moving and delivery services.</p>
+                    <a href="/Services" class="btn btn-primary-col w-100">View Services</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LoyaltySystem-->
+        <div class="col">
+            <div class="card m-3 p-3" style="width: 18rem;">
+                <img src="~/Images/loyalty.jpg" class="card-img-top" alt="Loyalty Image">
+                <div class="card-body">
+                    <h5 class="card-title">Loyalty Program</h5>
+                    <p class="card-text">See if you qualify for a free 12th month!</p>
+                    <a href="@Url.Action("BookingSummary", "Storage")" class="btn btn-primary-col w-100">Check Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="col">
+            <div class="card m-3 p-3" style="width: 18rem;">
+                <img src="./Images/review.jpg" class="card-img-top" alt="Customer Review">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Reviews</h5>
+                    <p class="card-text">See what our satisfied clients have to say about us.</p>
+                    <a href="/Reviews" class="btn btn-primary-col w-100">Read Reviews</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col">
+            <div class="card m-3 p-3" style="width: 18rem;">
+                <img src="./Images/Contact.jpg" class="card-img-top" alt="Contact Us">
+                <div class="card-body">
+                    <h5 class="card-title">Contact Us</h5>
+                    <p class="card-text">Need help or have questions? Reach out to our support team.</p>
+                    <a href="/Contact" class="btn btn-primary-col w-100">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

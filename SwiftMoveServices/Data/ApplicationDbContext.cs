@@ -13,5 +13,8 @@ namespace SwiftMoveServices.Data
         public DbSet<ServiceModel> Services { get; set; }
         public DbSet<ReviewModel> Reviews { get; set; }
 
+        public DbSet<StorageBookingModel> StorageBookings { get; set; }
+
+
     }
 }

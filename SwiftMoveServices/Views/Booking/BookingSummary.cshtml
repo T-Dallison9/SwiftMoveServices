@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SwiftMoveServices.Models.StorageBookingModel>
+
+@{
+    ViewData["Title"] = "Booking Summary";
+}
+
+<h2>Storage Bookings</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Consecutive Months</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.CustomerId</td>
+                <td>@booking.StartDate.ToShortDateString()</td>
+                <td>@(booking.EndDate?.ToShortDateString() ?? "Ongoing")</td>
+                <td>@booking.ConsecutiveMonths</td>
+                <td>
+                    @if (booking.IsFreeMonth)
+                    {
+                        <span class="badge bg-success">Free Loyalty Month!</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-info">Loyalty Streak: @booking.ConsecutiveMonths</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
