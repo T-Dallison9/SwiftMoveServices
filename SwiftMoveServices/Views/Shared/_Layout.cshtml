@@ -26,7 +26,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Service" asp-action="Index">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Storage" asp-action="BookingSummary">Booking</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Storage" asp-action="Create">Booking</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Review" asp-action="Index">Reviews</a>
@@ -37,6 +37,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                         </li>
+                        
                         @if (User.Identity.IsAuthenticated)
                         {
                             <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="d-inline">

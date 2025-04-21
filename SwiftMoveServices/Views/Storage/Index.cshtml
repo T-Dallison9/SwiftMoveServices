@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SwiftMoveServices.Models.StorageBookingModel>
+
+<div class="container">
+    <h1 class="my-3">Current Bookings:</h1>
+    <a asp-action="Create" class="btn btn-primary-col my-3 p-2 px-2">Create New Booking</a>
+
+    <div class="menu p-4">
+        <h1 class="name mt-2 mb-4">Here are your storage bookings!</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="fs-5">Customer ID</th>
+                    <th class="fs-5">Start Date</th>
+                    <th class="fs-5">End Date</th>
+                    <th class="fs-5">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@booking.CustomerId</td>
+                        <td>@booking.StartDate.ToString("yyyy-MM-dd")</td>
+                        <td>@(booking.EndDate?.ToString("yyyy-MM-dd") ?? "Ongoing")</td>
+                        <td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-sm btn-warning me-1">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-sm btn-danger">Delete</a>
+                            }
+                            else
+                            {
+                                <span class="text-muted">No actions available</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
