@@ -6,7 +6,7 @@ namespace SwiftMoveServices.Models
     {
         public int Id { get; set; }
 
-        public string CustomerId { get; set; } // Link to user (currently used as name)
+        public string CustomerId { get; set; } //Link to user (currently used as name)
 
         public int ConsecutiveMonths { get; set; }
 
@@ -18,6 +18,6 @@ namespace SwiftMoveServices.Models
 
         public DateTime BookingDate { get; set; } = DateTime.Now;
 
-        public decimal Price { get; set; } = 100; // Default price for storage
+        public decimal Price { get; set; } = 100; //Default price for storage
     }
 }

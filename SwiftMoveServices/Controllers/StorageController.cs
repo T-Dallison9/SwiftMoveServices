@@ -29,19 +29,19 @@ namespace SwiftMoveServices.Controllers
             return View();
         }
 
-        // POST: Storage/Create
+        //POST: Storage/Create
         [HttpPost]
         public async Task<IActionResult> Create(StorageBookingModel booking)
         {
             if (ModelState.IsValid)
             {
-                // Set booking date to now
+                //Set booking date to now
                 booking.BookingDate = DateTime.Now;
 
-                // Count bookings in the past 11 months (excluding free months)
+                //Count bookings in past 11 months (excluding free one)
                 var pastBookings = await _context.StorageBookings
                     .Where(b =>
-                        b.CustomerId == booking.CustomerId && // used as customer name manually
+                        b.CustomerId == booking.CustomerId && //used as customer name manually
                         b.BookingDate >= DateTime.Now.AddMonths(-11) &&
                         !b.IsFreeMonth)
                     .CountAsync();
@@ -50,7 +50,7 @@ namespace SwiftMoveServices.Controllers
                 if (pastBookings >= 11)
                 {
                     booking.IsFreeMonth = true;
-                    booking.Price = 0; // Optional depending on your model
+                    booking.Price = 0; 
                     ViewBag.LoyaltyMessage = "Congratulations! You've earned your 12th month free.";
                 }
                 else
@@ -68,7 +68,7 @@ namespace SwiftMoveServices.Controllers
             return View(booking);
         }
 
-        // GET: Storage/Edit/{id}
+        //GET: Storage/Edit/{id}
         public async Task<IActionResult> Edit(int id)
         {
             var booking = await _context.StorageBookings.FindAsync(id);
@@ -79,7 +79,7 @@ namespace SwiftMoveServices.Controllers
             return View(booking);
         }
 
-        // POST: Storage/Edit/{id}
+        //POST: Storage/Edit/{id}
         [HttpPost]
         public async Task<IActionResult> Edit(int id, StorageBookingModel booking)
         {
@@ -98,7 +98,7 @@ namespace SwiftMoveServices.Controllers
             return View(booking);
         }
 
-        // GET: Storage/Delete/{id}
+        //GET: Storage/Delete/{id}
         public async Task<IActionResult> Delete(int id)
         {
             var booking = await _context.StorageBookings.FindAsync(id);
